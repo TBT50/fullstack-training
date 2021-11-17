@@ -1,20 +1,23 @@
 import "./App.css";
-import { Link } from "react-router-dom";
+
+import notes from "./notes";
+
+import { Note } from "./components/Note";
 
 function App() {
   return (
     <div className="App">
-      <h1>Bookkeaper</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/invoices">Invoices</Link>
-          </li>
-          <li>
-            <Link to="/expenses">Expenses</Link>
-          </li>
-        </ul>
-      </nav>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map((note) => (
+          <Note
+            key={note.id}
+            content={note.content}
+            date={note.date}
+            important={note.important}
+          />
+        ))}
+      </ul>
     </div>
   );
 }
